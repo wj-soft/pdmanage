@@ -20,6 +20,9 @@ const db = mongoose.connection
 const connect = mongoose.connect('mongodb://127.0.0.1:27017/myDB')
 // autoIncrement.initialize(connect);
 
+// 라우팅 모듈
+var admin = require('./routes/admin')
+
 // express 서버
 const app = express()
 const port = process.env.PORT || 3000
@@ -42,6 +45,9 @@ app.post('/test', (req, res) =>{
   })
   product.save(err => console.log(err))
 })
+
+// 라우팅
+app.use('/admin', admin)
 
 app.listen(port, () =>{
   console.log('서버가동중')
