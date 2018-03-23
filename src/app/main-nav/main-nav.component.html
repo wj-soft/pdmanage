@@ -1,12 +1,51 @@
 
-<div>
+<div class="container">
  <h1>Simple Manage Fixed Assets</h1>
   <input class="input-inset" type="text" placeholder="자산번호의 고유번호를 입력하세요"> <br>
-    <button href="#" class="btn btn-lg btn-default">
+    <!-- 등록하기 -->
+    <button href="#" class="btn btn-lg btn-default" (click)="openModal(addTemplate)">
       <span class="glyphicon glyphicon-plus"></span> 등록하기</button>
-    <button href="#" class="btn btn-lg btn-default">
+    <ng-template #addTemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is a modal. add
+      </div>
+    </ng-template>
+    
+    <!-- 변경하기 -->
+    <button href="#" class="btn btn-lg btn-default" (click)="openModal(changeTemplate)">
       <span class="glyphicon glyphicon-retweet"></span> 변경하기</button>
-    <button href="#" class="btn btn-lg btn-default">
+    <ng-template #changeTemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is a modal. change
+      </div>
+    </ng-template>
+    
+    <!-- 조회하기 -->
+    <button href="#" class="btn btn-lg btn-default" (click)="openModal(lookTemplate)">
       <span class="glyphicon glyphicon-info-sign"></span> 조회하기</button>
+    <ng-template #lookTemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is a modal. look
+      </div>
+    </ng-template>
+
   <a href="#" class="managepage-button">관리자페이지</a>
 </div>

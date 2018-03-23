@@ -3,6 +3,9 @@ h1 {
     text-align: center;
     padding: 10px;
   }
+button{
+  height: 4rem;
+}
 
  .input-inset{
   font-size: 2rem;
