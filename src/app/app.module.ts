@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -24,6 +25,7 @@ import { LookupItemComponent } from './lookup-item/lookup-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AlertModule.forRoot(),
     ModalModule.forRoot()
   ],

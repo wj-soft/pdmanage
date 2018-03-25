@@ -21,20 +21,23 @@ const connect = mongoose.connect('mongodb://127.0.0.1:27017/myDB')
 // autoIncrement.initialize(connect);
 
 // 라우팅 모듈
-var admin = require('./routes/admin')
+const admin = require('./routes/admin')
 
 // express 서버
 const app = express()
 const port = process.env.PORT || 3000
+const cors = require('cors')
 
 // 미들웨어 설정
+app.use(cors());
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // server 테스트
 app.get('/', (req, res) => {
-  res.send('start')
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ a: 1 , b:2}));
 })
 
 app.post('/test', (req, res) =>{
