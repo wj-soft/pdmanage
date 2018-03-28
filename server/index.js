@@ -14,11 +14,14 @@ mongoose.Promise = global.Promise
 const autoIncrement = require('mongoose-auto-increment')
 
 const db = mongoose.connection
-  .on('error', console.error)
-  .once('open', () => console.log('데이터베이스 연결'))
+db.on('error', console.error)
+db.once('open', () => console.log('데이터베이스 연결'))
 
-const connect = mongoose.connect('mongodb://127.0.0.1:27017/myDB')
+const connect = mongoose.connect('mongodb://127.0.0.1:27017/myDB', { useMongoClient: true })
+
+//에러 : "mongoose-auto-increment has not been initialized", mongoose-auto-increment has not been initialized
 // autoIncrement.initialize(connect);
+
 
 // 라우팅 모듈
 const admin = require('./routes/admin')
@@ -37,17 +40,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // server 테스트
 app.get('/', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({ a: 1 , b:2}));
+  res.json({ a: 1 , b:2});
 })
 
-app.post('/test', (req, res) =>{
-  const product = new ProductsModel({
-    name: 'test',
-    price: 100,
-    description: 'db 데이터 테스트'
-  })
-  product.save(err => console.log(err))
-})
 
 // 라우팅
 app.use('/admin', admin)
