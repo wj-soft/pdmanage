@@ -9,6 +9,14 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class MainNavComponent implements OnInit {
 
+  pk = '';
+
+  addItem(product) {
+    console.log("hello")
+    //서버로 데이터 전송하기 => DB에 저장
+    // 최근변경내역 그리기 
+  }
+
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService) { }
 

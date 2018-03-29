@@ -1,19 +1,54 @@
 
 <div class="container">
  <h1>Simple Manage Fixed Assets</h1>
-  <input class="input-inset" type="text" placeholder="자산번호의 고유번호를 입력하세요"> <br>
+  <input class="input-inset" type="text" placeholder="자산번호의 고유번호를 입력하세요" [(ngModel)]="pk"> <br>
     <!-- 등록하기 -->
     <button href="#" class="btn btn-lg btn-default" (click)="openModal(addTemplate)">
       <span class="glyphicon glyphicon-plus"></span> 등록하기</button>
     <ng-template #addTemplate>
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
+        <h4 class="modal-title pull-left">제품등록</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        This is a modal. add
+          <form #productInfo="ngForm" (ngSubmit)="addItem(productInfo)">
+            <table class="table table-bordered">
+              <tr>
+                <th>자산번호</th>
+                <td>
+                  <input type="text" name="pk" class="form-control" value={{pk}} />
+                </td>
+              </tr>
+              <tr>
+                <th>구매가격</th>
+                <td>
+                  <input type="text" name="price" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>구매일자</th>
+                <td>
+                  <input type="text" name="day" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>감가상각</th>
+                <td>
+                  <input type="text" name="dep" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>상세내용</th>
+                <td>
+                  <input type="text" name="des" class="form-control" />
+                </td>
+              </tr>
+            </table>
+            <hr>
+            <input type="submit" value="submit" class="btn btn-primary">
+          </form>
       </div>
     </ng-template>
     
